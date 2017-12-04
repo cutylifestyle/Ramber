@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="208dp"
+    android:background="?attr/colorPrimaryDark"
+    android:theme="@style/ThemeOverlay.AppCompat.Dark"
+    android:gravity="bottom">
+
+    <ImageView
+        android:id="@+id/img_album_art"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop"
+        android:contentDescription="@string/app_name"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:orientation="vertical"
+        android:gravity="bottom">
+
+        <TextView
+            android:id="@+id/tv_song_title"
+            style="@style/NavTextViewStyle"
+            android:textSize="18sp"
+            />
+
+        <TextView
+            android:id="@+id/tv_song_artist"
+            style="@style/NavTextViewStyle"
+            android:layout_marginBottom="10dp"
+            android:paddingTop="2dp"
+            android:textSize="15sp"/>
+
+    </LinearLayout>
+
+</FrameLayout>

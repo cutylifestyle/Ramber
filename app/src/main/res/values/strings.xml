@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">Ramber</string>
+
+    <!--主界面抽屉界面的列表菜单-->
+    <string name="library">库</string>
+    <string name="playlist">播放列表</string>
+    <string name="folders">文件夹</string>
+    <string name="play_queue">播放队列</string>
+    <string name="now_playing">正在播放</string>
+    <string name="setting">设置</string>
+    <string name="about">关于</string>
+
+</resources>
