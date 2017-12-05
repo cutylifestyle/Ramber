@@ -10,4 +10,7 @@
     <string name="setting">设置</string>
     <string name="about">关于</string>
 
+    <!--菜单 库 下的behavior-->
+    <string name="appbar_scrolling_view_behavior" translatable="false">android.support.design.widget.AppBarLayout$ScrollingViewBehavior</string>
+
 </resources>
