@@ -13,4 +13,12 @@
     <!--菜单 库 下的behavior-->
     <string name="appbar_scrolling_view_behavior" translatable="false">android.support.design.widget.AppBarLayout$ScrollingViewBehavior</string>
 
+    <!--主界面下的内容分类菜单  indicator-->
+    <string name="songs">歌曲</string>
+    <string name="albums">专辑</string>
+    <string name="artists">艺术家</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
 </resources>
