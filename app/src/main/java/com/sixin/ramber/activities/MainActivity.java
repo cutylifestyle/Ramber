@@ -16,7 +16,7 @@ import com.sixin.ramber.fragments.MainFragment;
  * @author zhou
  * */
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends BaseActivity {
     //TODO 侧滑抽屉部分划出的时候没有响应,是因为布局顺序颠倒的原因，需要看源码
     //TODO drawable文件夹命名的秘密，以及style文件夹命名的秘密
     //TODO 矢量图
@@ -37,7 +37,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void initGUI() {
         mNavMain.getMenu().findItem(R.id.nav_library).setChecked(true);
-        bindFragment(MainFragment.newIntstance());
+        bindFragment(MainFragment.newInstance());
     }
 
     private void setViewsListener() {
@@ -49,7 +49,7 @@ public class MainActivity extends AppCompatActivity {
                         //TODO 需要优化的点：默认情况下初始加载这个界面，但是点击这个菜单界面又会重新创建
                         mNavMain.setCheckedItem(item.getItemId());
                         mDLMain.closeDrawers();
-                        bindFragment(MainFragment.newIntstance());
+                        bindFragment(MainFragment.newInstance());
                         break;
                     case R.id.nav_playlist:
                         break;

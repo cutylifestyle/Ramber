@@ -11,12 +11,12 @@ import java.util.List;
  * @author  zhou
  * */
 
-public class HomeVPAdatper extends FragmentStatePagerAdapter {
+public class HomeVPAdapter extends FragmentStatePagerAdapter {
 
     private List<Fragment> childFragments = new ArrayList<>();
     private List<String> fragmentTitles = new ArrayList<>();
 
-    public HomeVPAdatper(FragmentManager fm) {
+    public HomeVPAdapter(FragmentManager fm) {
         super(fm);
     }
 

@@ -13,7 +13,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.sixin.ramber.R;
-import com.sixin.ramber.adapters.HomeVPAdatper;
+import com.sixin.ramber.adapters.HomeVPAdapter;
 
 /**
  * @author zhou
@@ -30,7 +30,7 @@ public class MainFragment extends Fragment {
         // Required empty public constructor
     }
 
-    public static Fragment newIntstance(){
+    public static Fragment newInstance(){
         return new MainFragment();
     }
 
@@ -57,7 +57,7 @@ public class MainFragment extends Fragment {
     }
 
     private void setViewPager(View rootView) {
-        HomeVPAdatper adapter = new HomeVPAdatper(getChildFragmentManager());
+        HomeVPAdapter adapter = new HomeVPAdapter(getChildFragmentManager());
         adapter.addContent(SongsFragment.newInstance(),getString(R.string.songs));
         adapter.addContent(AlbumFragment.newInstance(),getString(R.string.albums));
         adapter.addContent(ArtistFragment.newInstance(),getString(R.string.artists));
