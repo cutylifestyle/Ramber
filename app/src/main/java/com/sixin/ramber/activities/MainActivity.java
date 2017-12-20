@@ -1,12 +1,11 @@
 package com.sixin.ramber.activities;
 
+import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentTransaction;
 import android.support.v4.widget.DrawerLayout;
-import android.os.Bundle;
 import android.view.MenuItem;
+
 import com.sixin.ramber.R;
 import com.sixin.ramber.fragments.MainFragment;
 
@@ -34,7 +33,7 @@ public class MainActivity extends BaseActivity {
 
     private void initGUI() {
         mNavMain.getMenu().findItem(R.id.nav_library).setChecked(true);
-        bindFragment(MainFragment.newInstance());
+        bindFragment(MainFragment.newInstance(),R.id.fragment_container);
     }
 
     private void setViewsListener() {
@@ -46,7 +45,7 @@ public class MainActivity extends BaseActivity {
                         //TODO 需要优化的点：默认情况下初始加载这个界面，但是点击这个菜单界面又会重新创建
                         mNavMain.setCheckedItem(item.getItemId());
                         mDLMain.closeDrawers();
-                        bindFragment(MainFragment.newInstance());
+                        bindFragment(MainFragment.newInstance(),R.id.fragment_container);
                         break;
                     case R.id.nav_playlist:
                         break;
@@ -71,14 +70,5 @@ public class MainActivity extends BaseActivity {
         mDLMain = findViewById(R.id.dl_main);
         mNavMain = findViewById(R.id.nv_main);
     }
-
-
-    private void bindFragment(Fragment fragment) {
-        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-        transaction.replace(R.id.fragment_container, fragment);
-        //TODO commitAllowingStateLoss commit 的区别，主界面调用的是第一个方法
-        transaction.commit();
-    }
-
 
 }
