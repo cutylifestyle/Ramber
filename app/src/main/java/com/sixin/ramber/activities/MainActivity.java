@@ -1,8 +1,13 @@
 package com.sixin.ramber.activities;
 
+import android.Manifest;
+import android.content.pm.PackageManager;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.view.MenuItem;
 
@@ -14,6 +19,7 @@ import com.sixin.ramber.fragments.MainFragment;
  * */
 
 public class MainActivity extends BaseActivity {
+    private static final int REQUEST_READ_EXTERNAL_STORAGE = 1;
     //TODO drawable文件夹命名的秘密
     //TODO 矢量图
     //TODO 碎片源码分析   CoordinatorLayout AppBarLayout ToolBar TabLayout
@@ -27,7 +33,12 @@ public class MainActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         initViews();
-        initGUI();
+        // TODO: 2017/12/22 这块代码需要重构成presenter的形式  权限的封装
+        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.M){
+            checkPermissionAndThenLoad();
+        }else{
+            initGUI();
+        }
         setViewsListener();
     }
 
@@ -71,4 +82,28 @@ public class MainActivity extends BaseActivity {
         mNavMain = findViewById(R.id.nv_main);
     }
 
+    private void checkPermissionAndThenLoad() {
+        if (ContextCompat.checkSelfPermission(this,
+                Manifest.permission.READ_EXTERNAL_STORAGE)
+                != PackageManager.PERMISSION_GRANTED)
+        {
+
+            ActivityCompat.requestPermissions(this,
+                    new String[]{Manifest.permission.READ_EXTERNAL_STORAGE},
+                    REQUEST_READ_EXTERNAL_STORAGE);
+        } else
+        {
+            initGUI();
+        }
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        if(requestCode == REQUEST_READ_EXTERNAL_STORAGE){
+            if(grantResults[0] == PackageManager.PERMISSION_GRANTED){
+                initGUI();
+            }
+        }
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+    }
 }

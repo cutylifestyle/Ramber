@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--控件尺寸-->
+    <dimen name="dp_0">0dp</dimen>
+    <dimen name="dp_1">1dp</dimen>
+    <dimen name="dp_3">3dp</dimen>
+    <dimen name="dp_6">6dp</dimen>
+    <dimen name="dp_8">8dp</dimen>
+    <dimen name="dp_10">10dp</dimen>
+    <dimen name="dp_55">55dp</dimen>
+
+    <!--字体大小-->
+    <dimen name="sp_13">13sp</dimen>
+    <dimen name="sp_16">16sp</dimen>
+
+
+</resources>
