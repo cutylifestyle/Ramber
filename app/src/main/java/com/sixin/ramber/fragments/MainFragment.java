@@ -39,10 +39,10 @@ public class MainFragment extends Fragment {
                              Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_main, container, false);
         initViews(rootView);
-        setActionBar(rootView);
+        setActionBar();
         //TODO 这种关联的方式对于日后的扩展存在很大的影响
-        setViewPager(rootView);
-        relationTabLayout(rootView);
+        setViewPager();
+        relationTabLayout();
         return rootView;
     }
 
@@ -52,11 +52,11 @@ public class MainFragment extends Fragment {
         mTabLibrary = rootView.findViewById(R.id.tab_library);
     }
 
-    private void relationTabLayout(View rootView) {
+    private void relationTabLayout() {
         mTabLibrary.setupWithViewPager(mVPLibrary);
     }
 
-    private void setViewPager(View rootView) {
+    private void setViewPager() {
         HomeVPAdapter adapter = new HomeVPAdapter(getChildFragmentManager());
         adapter.addContent(SongsFragment.newInstance(),getString(R.string.songs));
         adapter.addContent(AlbumFragment.newInstance(),getString(R.string.albums));
@@ -64,7 +64,7 @@ public class MainFragment extends Fragment {
         mVPLibrary.setAdapter(adapter);
     }
 
-    private void setActionBar(View rootView) {
+    private void setActionBar() {
         ((AppCompatActivity)getActivity()).setSupportActionBar(mTLLibrary);
         ActionBar actionBar = ((AppCompatActivity)getActivity()).getSupportActionBar();
         if(actionBar != null){

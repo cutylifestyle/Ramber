@@ -4,6 +4,8 @@ package com.sixin.ramber.fragments;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
+import android.support.v7.app.ActionBar;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -40,9 +42,20 @@ public class PlayListFragment extends Fragment implements IPlaylistLoadView{
                              Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_play_list, container, false);
         initViews(rootView);
+        setActionBar();
         configViewPager();
         playlistLoadPresenter.loadPlayLists(getContext());
         return rootView;
+    }
+
+    // TODO: 2017/12/27 actionBar这儿的代码出现了严重的重复，想办法融合
+    private void setActionBar() {
+        ((AppCompatActivity)getActivity()).setSupportActionBar(mTLPlaylist);
+        ActionBar actionBar = ((AppCompatActivity)getActivity()).getSupportActionBar();
+        if(actionBar != null){
+            actionBar.setDisplayHomeAsUpEnabled(true);
+            actionBar.setHomeAsUpIndicator(R.drawable.ic_menu);
+        }
     }
 
     private void initViews(View rootView) {

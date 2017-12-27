@@ -23,4 +23,9 @@
     <string name="playlist_recently_played">最近播放</string>
     <string name="playlist_top_tracks">我的最佳单曲</string>
 
+    <!--ActionBar中popupWindow中的菜单选项-->
+    <string name="shuffle_all">全部随机</string>
+    <string name="equalizer">均衡器</string>
+    <string name="search">搜索</string>
+
 </resources>

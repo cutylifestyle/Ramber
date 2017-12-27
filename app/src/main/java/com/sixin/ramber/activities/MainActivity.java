@@ -8,7 +8,9 @@ import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
+import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
+import android.view.Menu;
 import android.view.MenuItem;
 
 import com.sixin.ramber.R;
@@ -21,10 +23,9 @@ import com.sixin.ramber.fragments.PlayListFragment;
 
 public class MainActivity extends BaseActivity {
     private static final int REQUEST_READ_EXTERNAL_STORAGE = 1;
-    //TODO drawable文件夹命名的秘密
-    //TODO 矢量图
-    //TODO 碎片源码分析   CoordinatorLayout AppBarLayout ToolBar TabLayout
-
+    //TODO 矢量动画
+    //TODO 碎片源码分析  AppBarLayout ToolBar TabLayout
+    // TODO: 2017/12/27 Gallery
     private NavigationView mNavMain;
     private DrawerLayout mDLMain;
 
@@ -112,5 +113,21 @@ public class MainActivity extends BaseActivity {
             }
         }
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_actionbar,menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                mDLMain.openDrawer(GravityCompat.START);
+                break;
+        }
+        return super.onOptionsItemSelected(item);
     }
 }
