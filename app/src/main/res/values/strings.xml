@@ -18,4 +18,9 @@
     <string name="albums">专辑</string>
     <string name="artists">艺术家</string>
 
+    <!--播放列表菜单部分三个默认界面名称-->
+    <string name="playlist_last_added">最新添加</string>
+    <string name="playlist_recently_played">最近播放</string>
+    <string name="playlist_top_tracks">我的最佳单曲</string>
+
 </resources>

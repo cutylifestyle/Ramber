@@ -18,8 +18,6 @@ public class SongLoadPresenter {
 
     private ISongLoadView songLoadView;
 
-    private SongLoadAdapter songLoadAdapter;
-
     public SongLoadPresenter(ISongLoadView songLoadView){
         this.songLoadView = songLoadView;
     }
@@ -38,7 +36,7 @@ public class SongLoadPresenter {
 
         @Override
         protected void onPostExecute(ArrayList<Song> songs) {
-            songLoadAdapter = new SongLoadAdapter(songs);
+            SongLoadAdapter songLoadAdapter = new SongLoadAdapter(songs);
             songLoadView.setRecyclerViewAdapter(songLoadAdapter);
         }
     }

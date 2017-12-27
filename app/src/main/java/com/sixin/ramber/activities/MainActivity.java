@@ -13,6 +13,7 @@ import android.view.MenuItem;
 
 import com.sixin.ramber.R;
 import com.sixin.ramber.fragments.MainFragment;
+import com.sixin.ramber.fragments.PlayListFragment;
 
 /**
  * @author zhou
@@ -54,11 +55,12 @@ public class MainActivity extends BaseActivity {
                 switch (item.getItemId()) {
                     case R.id.nav_library:
                         //TODO 需要优化的点：默认情况下初始加载这个界面，但是点击这个菜单界面又会重新创建
-                        mNavMain.setCheckedItem(item.getItemId());
-                        mDLMain.closeDrawers();
+                        setNavigationState(item);
                         bindFragment(MainFragment.newInstance(),R.id.fragment_container);
                         break;
                     case R.id.nav_playlist:
+                        setNavigationState(item);
+                        bindFragment(PlayListFragment.newInstance(), R.id.fragment_container);
                         break;
                     case R.id.nav_folders:
                         break;
@@ -75,6 +77,11 @@ public class MainActivity extends BaseActivity {
                 return false;
             }
         });
+    }
+
+    private void setNavigationState(@NonNull MenuItem item) {
+        mNavMain.setCheckedItem(item.getItemId());
+        mDLMain.closeDrawers();
     }
 
     private void initViews() {

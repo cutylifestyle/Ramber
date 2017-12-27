@@ -1,0 +1,62 @@
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/img_playlist_page"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:contentDescription="@string/app_name"
+        android:layout_marginTop="@dimen/dp_30"
+        android:layout_marginBottom="@dimen/dp_60"
+        android:layout_marginStart="@dimen/dp_40"
+        android:layout_marginEnd="@dimen/dp_40"
+        android:src="@color/colorPrimary"/>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="@dimen/dp_60"
+        android:layout_marginBottom="@dimen/dp_80"
+        android:layout_marginEnd="@dimen/dp_40">
+
+        <TextView
+            android:id="@+id/tv_playlist_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            android:textSize="@dimen/sp_28"
+            android:text="@string/app_name"
+            android:maxLines="1"
+            android:ellipsize="end"
+            android:layout_marginEnd="@dimen/dp_10"/>
+
+        <TextView
+            android:id="@+id/tv_playlist_song_count"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            android:textSize="@dimen/sp_15"
+            android:text="@string/app_name"
+            android:maxLines="1"
+            android:ellipsize="end"/>
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/tv_playlist_number"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="@dimen/dp_45"
+        android:layout_marginEnd="@dimen/dp_60"
+        android:maxLines="2"
+        android:ellipsize="end"
+        android:textColor="@color/white"
+        android:text="@string/app_name"
+        android:textSize="@dimen/sp_35"/>
+
+</RelativeLayout>

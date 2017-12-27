@@ -7,11 +7,20 @@
     <dimen name="dp_6">6dp</dimen>
     <dimen name="dp_8">8dp</dimen>
     <dimen name="dp_10">10dp</dimen>
+    <dimen name="dp_30">30dp</dimen>
+    <dimen name="dp_40">40dp</dimen>
+    <dimen name="dp_45">45dp</dimen>
+    <dimen name="dp_50">50dp</dimen>
     <dimen name="dp_55">55dp</dimen>
+    <dimen name="dp_60">60dp</dimen>
+    <dimen name="dp_80">80dp</dimen>
 
     <!--字体大小-->
     <dimen name="sp_13">13sp</dimen>
+    <dimen name="sp_15">15sp</dimen>
     <dimen name="sp_16">16sp</dimen>
+    <dimen name="sp_28">28sp</dimen>
+    <dimen name="sp_35">35sp</dimen>
 
 
 </resources>
