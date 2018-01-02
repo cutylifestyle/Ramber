@@ -23,7 +23,7 @@ import com.sixin.ramber.fragments.PlayListFragment;
 
 public class MainActivity extends BaseActivity {
     private static final int REQUEST_READ_EXTERNAL_STORAGE = 1;
-    //TODO 矢量动画
+    //TODO 矢量动画，动画start以后在什么时候执行的
     //TODO AppBarLayout TabLayout 碎片中的菜单方法
     // TODO: 2017/12/27 Gallery
     private NavigationView mNavMain;
