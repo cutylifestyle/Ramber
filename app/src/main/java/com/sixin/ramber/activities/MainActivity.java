@@ -1,13 +1,9 @@
 package com.sixin.ramber.activities;
 
 import android.Manifest;
-import android.content.pm.PackageManager;
-import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
-import android.support.v4.app.ActivityCompat;
-import android.support.v4.content.ContextCompat;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.view.Menu;
@@ -16,6 +12,10 @@ import android.view.MenuItem;
 import com.sixin.ramber.R;
 import com.sixin.ramber.fragments.MainFragment;
 import com.sixin.ramber.fragments.PlayListFragment;
+import com.sixin.ramber.utils.permissionsutil.PermissionsDenied;
+import com.sixin.ramber.utils.permissionsutil.PermissionsGranted;
+import com.sixin.ramber.utils.permissionsutil.PermissionsNoNeeded;
+import com.sixin.ramber.utils.permissionsutil.PermissionsUtil;
 
 /**
  * @author zhou
@@ -35,13 +35,8 @@ public class MainActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         initViews();
-        // TODO: 2017/12/22 这块代码需要重构成presenter的形式  权限的封装
-        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.M){
-            checkPermissionAndThenLoad();
-        }else{
-            initGUI();
-        }
         setViewsListener();
+        checkPermissionAndThenLoad();
     }
 
     private void initGUI() {
@@ -74,8 +69,7 @@ public class MainActivity extends BaseActivity {
                     case R.id.nav_about:
                         break;
                 }
-                //TODO 返回false与返回true之间存在什么区别
-                return false;
+                return true;
             }
         });
     }
@@ -91,28 +85,31 @@ public class MainActivity extends BaseActivity {
     }
 
     private void checkPermissionAndThenLoad() {
-        if (ContextCompat.checkSelfPermission(this,
-                Manifest.permission.READ_EXTERNAL_STORAGE)
-                != PackageManager.PERMISSION_GRANTED)
-        {
-
-            ActivityCompat.requestPermissions(this,
-                    new String[]{Manifest.permission.READ_EXTERNAL_STORAGE},
-                    REQUEST_READ_EXTERNAL_STORAGE);
-        } else
-        {
-            initGUI();
-        }
+        PermissionsUtil.requestPermissions(this,
+                REQUEST_READ_EXTERNAL_STORAGE,
+                Manifest.permission.READ_EXTERNAL_STORAGE);
     }
 
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
-        if(requestCode == REQUEST_READ_EXTERNAL_STORAGE){
-            if(grantResults[0] == PackageManager.PERMISSION_GRANTED){
-                initGUI();
-            }
-        }
+        PermissionsUtil.onRequestPermissionsResult(this,
+                requestCode,permissions,grantResults);
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+    }
+
+    @PermissionsGranted
+    private void permissionsGranted(){
+        initGUI();
+    }
+
+    @PermissionsDenied
+    private void permissionsDenied(){
+        finish();
+    }
+
+    @PermissionsNoNeeded
+    private void permissionsNoNeeded(){
+        initGUI();
     }
 
     @Override
