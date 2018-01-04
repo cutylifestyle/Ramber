@@ -10,7 +10,7 @@
     <string name="setting">设置</string>
     <string name="about">关于</string>
 
-    <!--菜单 库 下的behavior-->
+    <!--behavior-->
     <string name="appbar_scrolling_view_behavior" translatable="false">android.support.design.widget.AppBarLayout$ScrollingViewBehavior</string>
 
     <!--主界面下的内容分类菜单  indicator-->
@@ -27,5 +27,8 @@
     <string name="shuffle_all">全部随机</string>
     <string name="equalizer">均衡器</string>
     <string name="search">搜索</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 </resources>
