@@ -10,6 +10,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import com.sixin.ramber.R;
+import com.sixin.ramber.fragments.FoldersFragment;
 import com.sixin.ramber.fragments.MainFragment;
 import com.sixin.ramber.fragments.PlayListFragment;
 import com.sixin.ramber.utils.permissionsutil.PermissionsDenied;
@@ -26,6 +27,8 @@ public class MainActivity extends BaseActivity {
     //TODO 矢量动画，动画start以后在什么时候执行的
     //TODO AppBarLayout TabLayout 碎片中的菜单方法
     // TODO: 2017/12/27 Gallery
+    // TODO: 2018/1/3 behavivor的原理
+    // TODO: 2018/1/3 集成下拉刷新控件
     private NavigationView mNavMain;
     private DrawerLayout mDLMain;
 
@@ -59,6 +62,8 @@ public class MainActivity extends BaseActivity {
                         bindFragment(PlayListFragment.newInstance(), R.id.fragment_container);
                         break;
                     case R.id.nav_folders:
+                        setNavigationState(item);
+                        bindFragment(FoldersFragment.newInstance(),R.id.fragment_container);
                         break;
                     case R.id.nav_play_queue:
                         break;
