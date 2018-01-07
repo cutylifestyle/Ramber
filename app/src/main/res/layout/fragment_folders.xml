@@ -13,14 +13,36 @@
             app:title="@string/folders"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:minHeight="?attr/actionBarSize"/>
+            android:minHeight="?attr/actionBarSize"
+            app:layout_scrollFlags="scroll|enterAlways"/>
 
     </android.support.design.widget.AppBarLayout>
 
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/rlv_folders"
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior"/>
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/rlv_indicator"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_40"
+            android:paddingStart="@dimen/dp_10"
+            android:paddingEnd="@dimen/dp_0"/>
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/rlv_folders"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/rlv_indicator"/>
+
+        <ProgressBar
+            android:id="@+id/proBar_folders"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:visibility="invisible"/>
+
+    </RelativeLayout>
 
 </android.support.design.widget.CoordinatorLayout>

@@ -2,10 +2,12 @@ package com.sixin.ramber.activities;
 
 import android.Manifest;
 import android.os.Bundle;
+import android.os.Environment;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 
@@ -18,17 +20,21 @@ import com.sixin.ramber.utils.permissionsutil.PermissionsGranted;
 import com.sixin.ramber.utils.permissionsutil.PermissionsNoNeeded;
 import com.sixin.ramber.utils.permissionsutil.PermissionsUtil;
 
+import java.io.File;
+
 /**
  * @author zhou
  * */
 
 public class MainActivity extends BaseActivity {
     private static final int REQUEST_READ_EXTERNAL_STORAGE = 1;
+    private static final String TAG = MainActivity.class.getName();
     //TODO 矢量动画，动画start以后在什么时候执行的
     //TODO AppBarLayout TabLayout 碎片中的菜单方法
     // TODO: 2017/12/27 Gallery
-    // TODO: 2018/1/3 behavivor的原理
+    // TODO: 2018/1/3 behavior的原理
     // TODO: 2018/1/3 集成下拉刷新控件
+    // TODO: 2018/1/7 baseRecyclerAdapter
     private NavigationView mNavMain;
     private DrawerLayout mDLMain;
 
@@ -40,6 +46,10 @@ public class MainActivity extends BaseActivity {
         initViews();
         setViewsListener();
         checkPermissionAndThenLoad();
+        File file = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_MUSIC);
+        if(file != null){
+            Log.d(TAG, file.getAbsolutePath());
+        }
     }
 
     private void initGUI() {

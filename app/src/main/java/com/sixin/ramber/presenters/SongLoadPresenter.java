@@ -2,6 +2,7 @@ package com.sixin.ramber.presenters;
 
 import android.content.Context;
 import android.os.AsyncTask;
+import android.support.v7.widget.RecyclerView;
 
 import com.sixin.ramber.adapters.SongLoadAdapter;
 import com.sixin.ramber.models.Song;

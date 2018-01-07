@@ -26,7 +26,7 @@ public class PlayListFragment extends Fragment implements IPlaylistLoadView{
     private Toolbar mTLPlaylist;
     private ViewPager mVPPlaylist;
 
-    private PlaylistLoadPresenter playlistLoadPresenter = new PlaylistLoadPresenter(this);
+    private PlaylistLoadPresenter mPlaylistLoadPresenter = new PlaylistLoadPresenter(this);
 
     public PlayListFragment() {
         // Required empty public constructor
@@ -44,7 +44,7 @@ public class PlayListFragment extends Fragment implements IPlaylistLoadView{
         initViews(rootView);
         setActionBar();
         configViewPager();
-        playlistLoadPresenter.loadPlayLists(getContext());
+        mPlaylistLoadPresenter.loadPlayLists(getContext());
         return rootView;
     }
 
