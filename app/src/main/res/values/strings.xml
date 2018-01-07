@@ -28,7 +28,4 @@
     <string name="equalizer">均衡器</string>
     <string name="search">搜索</string>
 
-    <!--文件夹菜单界面中indicator内的内容-->
-    <string name="internal_storage">内部存储设备</string>
-
 </resources>

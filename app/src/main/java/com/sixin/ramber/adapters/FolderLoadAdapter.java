@@ -11,6 +11,7 @@ import com.sixin.ramber.R;
 import com.sixin.ramber.utils.FileUtil;
 
 import java.io.File;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -19,26 +20,39 @@ import java.util.List;
 
 public class FolderLoadAdapter extends RecyclerView.Adapter<FolderLoadAdapter.FolderLoadViewHolder> {
     // TODO: 2018/1/7 上拉的时候，最上部的阴影要去掉 indicator需要增加底线
-    private List<File> data;
+    private List<File> data = new ArrayList<>();
 
-    public FolderLoadAdapter(List<File> data){
-        this.data = data;
+    private OnFoldersItemClickListener listener;
+
+    public FolderLoadAdapter(){}
+
+    public void setOnFoldersItemClickListener(OnFoldersItemClickListener listener){
+        this.listener = listener;
     }
 
     @Override
-    public FolderLoadViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        return new FolderLoadViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.folder_recycler_item,parent,false));
+    public FolderLoadAdapter.FolderLoadViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        return new FolderLoadAdapter.FolderLoadViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.folder_recycler_item,parent,false));
     }
 
     @Override
-    public void onBindViewHolder(FolderLoadViewHolder holder, int position) {
-        File file = data.get(position);
+    public void onBindViewHolder(FolderLoadAdapter.FolderLoadViewHolder holder, int position) {
+        final File file = data.get(position);
         if(FileUtil.isDir(file)){
             holder.mImgFolder.setImageResource(R.drawable.ic_folder_open_black_24dp);
         }else{
             holder.mImgFolder.setImageResource(R.drawable.ic_file_black_24dp);
         }
         holder.mTvFolderName.setText(file.getName());
+
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(listener != null){
+                    listener.onFoldersItemClick(v,file);
+                }
+            }
+        });
     }
 
     @Override
@@ -46,12 +60,23 @@ public class FolderLoadAdapter extends RecyclerView.Adapter<FolderLoadAdapter.Fo
         return data.size();
     }
 
+    public void replaceData(List<File> data){
+        this.data.clear();
+        this.data.addAll(data);
+    }
+
+    public interface OnFoldersItemClickListener{
+
+        void onFoldersItemClick(View v, File file);
+
+    }
+
     class FolderLoadViewHolder extends RecyclerView.ViewHolder{
 
         private ImageView mImgFolder;
         private TextView mTvFolderName;
 
-        public FolderLoadViewHolder(View itemView) {
+        FolderLoadViewHolder(View itemView) {
             super(itemView);
             initViews();
         }

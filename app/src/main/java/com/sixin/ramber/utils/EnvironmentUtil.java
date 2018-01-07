@@ -2,6 +2,8 @@ package com.sixin.ramber.utils;
 
 import android.os.Environment;
 
+import java.io.File;
+
 /**
  * @author zhou
  */
@@ -25,7 +27,15 @@ public class EnvironmentUtil {
      * */
     public static String getExternalStorageDirectoryPath(){
         return !isMediaMounted()? null:
-                Environment.getExternalStorageDirectory().getAbsolutePath();
+                Environment.getExternalStorageDirectory().getPath();
+    }
+
+    /**
+     * 获取存储卡根目录
+     * */
+    public static File getExternalStorageDirectory(){
+        return !isMediaMounted()? null:
+                Environment.getExternalStorageDirectory();
     }
 
 }

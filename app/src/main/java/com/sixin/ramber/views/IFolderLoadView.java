@@ -1,6 +1,8 @@
 package com.sixin.ramber.views;
 
-import android.support.v7.widget.RecyclerView;
+
+import java.io.File;
+import java.util.List;
 
 /**
  * @author zhou
@@ -8,10 +10,11 @@ import android.support.v7.widget.RecyclerView;
 
 public interface IFolderLoadView {
 
-    void setAdapter(RecyclerView.Adapter adapter);
-
     void showProgress();
 
     void dismissProgress();
 
+    void notifyFoldersDataSetChanged(List<File> files);
+
+    void notifyIndicatorDataSetChanged(File dirFile);
 }

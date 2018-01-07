@@ -17,23 +17,29 @@ import android.widget.ProgressBar;
 
 import com.sixin.ramber.R;
 import com.sixin.ramber.adapters.FolderIndicatorAdapter;
+import com.sixin.ramber.adapters.FolderLoadAdapter;
 import com.sixin.ramber.presenters.FolderLoadPresenter;
+import com.sixin.ramber.utils.EnvironmentUtil;
 import com.sixin.ramber.views.IFolderLoadView;
 
-import java.util.ArrayList;
+import java.io.File;
 import java.util.List;
 
 
-public class FoldersFragment extends Fragment implements IFolderLoadView{
+public class FoldersFragment extends Fragment implements IFolderLoadView, FolderLoadAdapter.OnFoldersItemClickListener, FolderIndicatorAdapter.OnIndicatorItemClickListener {
 
     // TODO: 2018/1/7 自定义进度条
+    // TODO: 2018/1/7 这里面的判空存在很大的漏洞，这块的逻辑需要整体检查一遍才行
 
     private Toolbar mTLFolders;
     private RecyclerView mRLVFolders;
     private RecyclerView mRLVIndicator;
     private ProgressBar mProBarFolders;
 
-    private FolderLoadPresenter mFolderLoadPresenter = new FolderLoadPresenter(this);;
+    private FolderLoadAdapter mRLVFoldersAdapter;
+    private FolderIndicatorAdapter mRLVIndicatorAdapter;
+
+    private FolderLoadPresenter mFolderLoadPresenter = new FolderLoadPresenter(this);
 
     public FoldersFragment() {
         // Required empty public constructor
@@ -47,16 +53,40 @@ public class FoldersFragment extends Fragment implements IFolderLoadView{
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_folders, container, false);
+
         initViews(rootView);
         setActionBar();
+
         configRLVIndicator();
         configRLVFolders();
-        List<String> data = new ArrayList<>();
-        data.add(getResources().getString(R.string.internal_storage));
-        mRLVIndicator.setAdapter(new FolderIndicatorAdapter(data));
-        mFolderLoadPresenter.loadFolders();
+
+        setRLVFoldersAdapter();
+        setRLVFoldersItemClickListener();
+
+        setRLVIndicatorAdapter();
+        setRLVIndicatorItemClickListener();
+
+        mFolderLoadPresenter.loadFolders(EnvironmentUtil.getExternalStorageDirectory());
 
         return rootView;
+    }
+
+    private void setRLVIndicatorItemClickListener() {
+        mRLVIndicatorAdapter.setOnIndicatorItemClickListener(this);
+    }
+
+    private void setRLVIndicatorAdapter() {
+        mRLVIndicatorAdapter = new FolderIndicatorAdapter();
+        mRLVIndicator.setAdapter(mRLVIndicatorAdapter);
+    }
+
+    private void setRLVFoldersItemClickListener() {
+        mRLVFoldersAdapter.setOnFoldersItemClickListener(this);
+    }
+
+    private void setRLVFoldersAdapter() {
+        mRLVFoldersAdapter = new FolderLoadAdapter();
+        mRLVFolders.setAdapter(mRLVFoldersAdapter);
     }
 
     private void initViews(View rootView) {
@@ -85,11 +115,6 @@ public class FoldersFragment extends Fragment implements IFolderLoadView{
     }
 
     @Override
-    public void setAdapter(RecyclerView.Adapter adapter) {
-        mRLVFolders.setAdapter(adapter);
-    }
-
-    @Override
     public void showProgress() {
         mProBarFolders.setVisibility(View.VISIBLE);
     }
@@ -97,5 +122,28 @@ public class FoldersFragment extends Fragment implements IFolderLoadView{
     @Override
     public void dismissProgress() {
         mProBarFolders.setVisibility(View.INVISIBLE);
+    }
+
+    @Override
+    public void notifyFoldersDataSetChanged(List<File> files) {
+        mRLVFoldersAdapter.replaceData(files);
+        mRLVFoldersAdapter.notifyDataSetChanged();
+    }
+
+    @Override
+    public void notifyIndicatorDataSetChanged(File dirFile) {
+        mRLVIndicatorAdapter.addData(dirFile);
+        mRLVIndicatorAdapter.notifyDataSetChanged();
+    }
+
+    @Override
+    public void onFoldersItemClick(View v, File file) {
+        mFolderLoadPresenter.loadFolders(file);
+    }
+
+    @Override
+    public void onIndicatorItemClick(View v, File dirFile, int position) {
+        mRLVIndicatorAdapter.removeDataAfterPosition(position);
+        mFolderLoadPresenter.loadFolders(dirFile);
     }
 }

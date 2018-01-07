@@ -1,15 +1,15 @@
 package com.sixin.ramber.presenters;
 
 import android.os.AsyncTask;
-import android.support.v7.widget.RecyclerView;
 
-import com.sixin.ramber.adapters.FolderLoadAdapter;
-import com.sixin.ramber.utils.EnvironmentUtil;
+import com.sixin.ramber.adapters.FolderIndicatorAdapter;
 import com.sixin.ramber.utils.FileUtil;
 import com.sixin.ramber.views.IFolderLoadView;
 
 import java.io.File;
 import java.util.List;
+
+import io.reactivex.annotations.NonNull;
 
 /**
  * @author zhou
@@ -19,11 +19,14 @@ public class FolderLoadPresenter {
 
     private IFolderLoadView folderLoadView;
 
+    private File mDirFile;
+
     public FolderLoadPresenter(IFolderLoadView view){
         folderLoadView =view;
     }
 
-    public void loadFolders(){
+    public void loadFolders(@NonNull File dirFile){
+        mDirFile =dirFile;
         new FolderLoadAsyn().execute();
     }
 
@@ -36,15 +39,16 @@ public class FolderLoadPresenter {
 
         @Override
         protected List<File> doInBackground(Void... voids) {
-            return  FileUtil.listFilesInDir(EnvironmentUtil.getExternalStorageDirectoryPath());
+            return  FileUtil.listFilesInDir(mDirFile,false);
         }
 
         @Override
         protected void onPostExecute(List<File> files) {
             folderLoadView.dismissProgress();
+            // TODO: 2018/1/7 需要一个工具类来处理  判空工具类，字符串工具类
             if(files != null){
-                RecyclerView.Adapter adapter = new FolderLoadAdapter(files);
-                folderLoadView.setAdapter(adapter);
+                folderLoadView.notifyIndicatorDataSetChanged(mDirFile);
+                folderLoadView.notifyFoldersDataSetChanged(files);
             }
         }
     }

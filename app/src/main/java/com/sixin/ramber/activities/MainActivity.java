@@ -6,6 +6,7 @@ import android.os.Environment;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
+import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
 import android.util.Log;
 import android.view.Menu;
@@ -46,10 +47,6 @@ public class MainActivity extends BaseActivity {
         initViews();
         setViewsListener();
         checkPermissionAndThenLoad();
-        File file = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_MUSIC);
-        if(file != null){
-            Log.d(TAG, file.getAbsolutePath());
-        }
     }
 
     private void initGUI() {
