@@ -58,6 +58,19 @@ public class ActivityUtil {
         startActivity(context,extras,context.getPackageName(),cls.getName(),null);
     }
 
+    /**
+     * 启动 Activity
+     *
+     * @param extras   extras
+     * @param activity activity
+     * @param cls      Activity 类
+     */
+    public static void startActivity(@NonNull final Activity activity,
+                                     @NonNull final Class<?> cls,
+                                     @NonNull final Bundle extras) {
+        startActivity(activity,extras,activity.getPackageName(),cls.getName(),null);
+    }
+
     private static Context getTopActivityOrApp(){
         Activity topActivity = getTopActivity();
         return topActivity == null ? Util.getApp():topActivity;

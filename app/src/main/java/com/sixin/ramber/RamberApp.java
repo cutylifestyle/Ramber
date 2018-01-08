@@ -2,6 +2,8 @@ package com.sixin.ramber;
 
 import android.app.Application;
 
+import com.sixin.ramber.utils.Util;
+
 /**
  * @author zhou
  */
@@ -13,5 +15,6 @@ public class RamberApp extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
+        Util.init(this);
     }
 }
