@@ -57,15 +57,15 @@ public class MainActivity extends BaseActivity {
                 switch (item.getItemId()) {
                     case R.id.nav_library:
                         //TODO 需要优化的点：默认情况下初始加载这个界面，但是点击这个菜单界面又会重新创建
-                        setNavigationState(item);
+                        setNavigationState(item,true);
                         bindFragment(MainFragment.newInstance(),R.id.fragment_container);
                         break;
                     case R.id.nav_playlist:
-                        setNavigationState(item);
+                        setNavigationState(item,true);
                         bindFragment(PlayListFragment.newInstance(), R.id.fragment_container);
                         break;
                     case R.id.nav_folders:
-                        setNavigationState(item);
+                        setNavigationState(item,true);
                         bindFragment(FoldersFragment.newInstance(),R.id.fragment_container);
                         break;
                     case R.id.nav_play_queue:
@@ -73,7 +73,7 @@ public class MainActivity extends BaseActivity {
                     case R.id.nav_now_playing:
                         break;
                     case R.id.nav_setting:
-                        setNavigationState(item);
+                        setNavigationState(item,false);
                         startSettingsActivity();
                         break;
                     case R.id.nav_about:
@@ -90,9 +90,11 @@ public class MainActivity extends BaseActivity {
         ActivityUtil.startActivity(this, SettingsActivity.class, extras);
     }
 
-    private void setNavigationState(@NonNull MenuItem item) {
+    private void setNavigationState(@NonNull MenuItem item,boolean isClose) {
         mNavMain.setCheckedItem(item.getItemId());
-        mDLMain.closeDrawers();
+        if(isClose){
+            mDLMain.closeDrawers();
+        }
     }
 
     private void initViews() {
