@@ -25,8 +25,6 @@ import com.sixin.ramber.utils.permissionsutil.PermissionsUtil;
  * */
 
 public class MainActivity extends BaseActivity {
-    private static final int REQUEST_READ_EXTERNAL_STORAGE = 1;
-    private static final String TAG = MainActivity.class.getName();
     //TODO 矢量动画，动画start以后在什么时候执行的
     //TODO AppBarLayout TabLayout 碎片中的菜单方法
     // TODO: 2017/12/27 Gallery
@@ -104,7 +102,7 @@ public class MainActivity extends BaseActivity {
 
     private void checkPermissionAndThenLoad() {
         PermissionsUtil.requestPermissions(this,
-                REQUEST_READ_EXTERNAL_STORAGE,
+                Config.REQUEST_READ_EXTERNAL_STORAGE,
                 Manifest.permission.READ_EXTERNAL_STORAGE);
     }
 
