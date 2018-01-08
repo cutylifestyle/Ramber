@@ -100,7 +100,23 @@ public class ActivityUtil {
         }else{
             context.startActivity(intent);
         }
+    }
 
+    /**
+     * 结束 Activity,没有退出动画
+     *
+     * @param activity activity
+     */
+    public static void finishActivity(@NonNull final Activity activity){
+        finishActivity(activity,false);
+    }
+
+    private static void finishActivity(@NonNull final Activity activity,
+                                      @NonNull final boolean isLoadAnim){
+        activity.finish();
+        if(!isLoadAnim){
+            activity.overridePendingTransition(0,0);
+        }
     }
 
 
