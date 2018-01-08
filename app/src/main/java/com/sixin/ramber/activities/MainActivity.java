@@ -47,7 +47,7 @@ public class MainActivity extends BaseActivity {
 
     private void initGUI() {
         mNavMain.getMenu().findItem(R.id.nav_library).setChecked(true);
-        bindFragment(MainFragment.newInstance(),R.id.fragment_container);
+        bindFragmentV4(MainFragment.newInstance(),R.id.fragment_container);
     }
 
     private void setViewsListener() {
@@ -58,15 +58,15 @@ public class MainActivity extends BaseActivity {
                     case R.id.nav_library:
                         //TODO 需要优化的点：默认情况下初始加载这个界面，但是点击这个菜单界面又会重新创建
                         setNavigationState(item,true);
-                        bindFragment(MainFragment.newInstance(),R.id.fragment_container);
+                        bindFragmentV4(MainFragment.newInstance(),R.id.fragment_container);
                         break;
                     case R.id.nav_playlist:
                         setNavigationState(item,true);
-                        bindFragment(PlayListFragment.newInstance(), R.id.fragment_container);
+                        bindFragmentV4(PlayListFragment.newInstance(), R.id.fragment_container);
                         break;
                     case R.id.nav_folders:
                         setNavigationState(item,true);
-                        bindFragment(FoldersFragment.newInstance(),R.id.fragment_container);
+                        bindFragmentV4(FoldersFragment.newInstance(),R.id.fragment_container);
                         break;
                     case R.id.nav_play_queue:
                         break;

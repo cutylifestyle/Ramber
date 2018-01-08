@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <PreferenceCategory
+        android:title="@string/now_playing">
+
+        <Preference
+            android:title="@string/now_playing"
+            android:summary="@string/now_playing_selector"
+            android:key="@string/key_now_playing"/>
+
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:title="@string/individualization">
+
+        <CheckBoxPreference
+            android:title="@string/dark_theme"
+            android:summary="@string/dark_theme_summary"
+            android:key="@string/key_dark_theme"
+            android:defaultValue="false"/>
+
+        <Preference
+            android:title="@string/primary_color"
+            android:summary="@string/primary_color_summary"
+            android:key="@string/key_primary_color"/>
+
+        <Preference
+            android:title="@string/accent_color"
+            android:summary="@string/accent_color_summary"
+            android:key="@string/key_accent_color"/>
+
+        <CheckBoxPreference
+            android:title="@string/colored_status_bar"
+            android:summary="@string/colored_status_bar_summary"
+            android:key="@string/key_colored_status_bar"
+            android:defaultValue="true"/>
+
+        <CheckBoxPreference
+            android:title="@string/colored_nav_bar"
+            android:summary="@string/colored_status_bar_summary"
+            android:key="@string/key_colored_nav_bar"
+            android:defaultValue="false"/>
+
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:title="@string/other">
+
+        <CheckBoxPreference
+            android:title="@string/pause_detach"
+            android:summary="@string/summary_pause_detach"
+            android:key="@string/key_pause_detach"
+            android:defaultValue="true"/>
+
+        <CheckBoxPreference
+            android:title="@string/lock_screen"
+            android:summary="@string/lock_screen_summary"
+            android:key="@string/key_lock_screen"
+            android:defaultValue="true"/>
+
+    </PreferenceCategory>
+
+</PreferenceScreen>

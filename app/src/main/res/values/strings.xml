@@ -28,4 +28,41 @@
     <string name="equalizer">均衡器</string>
     <string name="search">搜索</string>
 
+    <!--设置界面的首选项-->
+    <string name="now_playing_selector">从4种不同的播放界面风格中选择一个</string>
+    <string name="key_now_playing">now_playing_selector</string>
+
+    <string name="individualization">个性化</string>
+
+    <string name="dark_theme">夜间模式</string>
+    <string name="dark_theme_summary">应用夜间模式到整个应用</string>
+    <string name="key_dark_theme">dark_theme</string>
+
+    <string name="primary_color">基础色</string>
+    <string name="primary_color_summary">更改基础主题色</string>
+    <string name="key_primary_color">primary_color</string>
+
+    <string name="accent_color">强调色</string>
+    <string name="accent_color_summary">更改强调主题色</string>
+    <string name="key_accent_color">accent_color</string>
+
+    <string name="colored_status_bar">状态栏着色</string>
+    <string name="colored_status_bar_summary">切换状态栏的着色状态</string>
+    <string name="key_colored_status_bar">colored_status_bar</string>
+
+    <string name="colored_nav_bar">导航栏着色</string>
+    <string name="colored_nav_bar_summary">切换导航栏的着色状态</string>
+    <string name="key_colored_nav_bar">colored_nav_bar</string>
+
+    <string name="other">其他</string>
+
+    <string name="pause_detach">拔出时暂停</string>
+    <string name="summary_pause_detach">当耳机拔出时暂停播放</string>
+    <string name="key_pause_detach">pause_detach</string>
+
+    <string name="lock_screen">锁屏</string>
+    <string name="lock_screen_summary">在锁屏界面显示专辑封面</string>
+    <string name="key_lock_screen">lock_screen</string>
+
+
 </resources>

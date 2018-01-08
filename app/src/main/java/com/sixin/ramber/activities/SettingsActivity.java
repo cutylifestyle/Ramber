@@ -4,15 +4,15 @@ import android.os.Bundle;
 import android.support.v7.app.ActionBar;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
-import android.widget.FrameLayout;
 
 import com.sixin.ramber.R;
+import com.sixin.ramber.fragments.SettingsFragment;
 import com.sixin.ramber.utils.ActivityUtil;
 
 public class SettingsActivity extends BaseActivity {
     // TODO: 2018/1/8 settingActivity的主题样式问题
     private Toolbar mToolbarSettings;
-    private FrameLayout mFragmentContainer;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,11 +20,11 @@ public class SettingsActivity extends BaseActivity {
         setContentView(R.layout.activity_settings);
         initViews();
         setActionBar();
+        bindFragment(SettingsFragment.newInstance(),R.id.fragment_container);
     }
 
     private void initViews() {
         mToolbarSettings = findViewById(R.id.toolbar_settings);
-        mFragmentContainer = findViewById(R.id.fragment_container);
     }
 
     private void setActionBar(){
