@@ -7,8 +7,10 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.sixin.ramber.R;
 import com.sixin.ramber.models.Song;
+import com.sixin.ramber.utils.ComprehensiveUtil;
 
 import java.util.ArrayList;
 
@@ -34,6 +36,10 @@ public class SongLoadAdapter extends RecyclerView.Adapter<SongLoadAdapter.SongLo
         Song song = data.get(position);
         holder.mTvSongTitle.setText(song.getTitle());
         holder.mTvSongArtist.setText(song.getArtistName());
+        // TODO: 2018/1/16 定制加载错误以及默认的图片
+        Glide.with(holder.itemView.getContext())
+                .load(ComprehensiveUtil.getAlbumArtUri(song.getAlbumId()))
+                .into(holder.mImgAlbumArt);
     }
 
     @Override
