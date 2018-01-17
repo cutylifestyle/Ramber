@@ -15,7 +15,7 @@ import com.sixin.ramber.R;
 
 public class SettingsFragment extends PreferenceFragment {
     // TODO: 2018/1/8 xml中还有很多东西没有配置 如果我非要在滑动的过程中toolBar上移怎么办
-    // TODO: 2018/1/8 源码分析---->替换preference控件，处理逻辑
+    // TODO: 2018/1/8 处理逻辑，hide优化程序 了解控件代码的执行过程
     public SettingsFragment() {
         // Required empty public constructor
     }

@@ -38,7 +38,7 @@ public class SongsFragment extends Fragment implements ISongLoadView{
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View rootView = inflater.inflate(R.layout.fragment_songs, container, false);
+        View rootView = inflater.inflate(R.layout.fragment_music, container, false);
         initViews(rootView);
         configRecyclerView();
         songLoadPresenter.loadSongs(getContext());
@@ -46,7 +46,7 @@ public class SongsFragment extends Fragment implements ISongLoadView{
     }
 
     private void initViews(View rootView) {
-        mRlVSongs = rootView.findViewById(R.id.rlv_songs);
+        mRlVSongs = rootView.findViewById(R.id.rlv_music);
     }
 
     private void configRecyclerView() {

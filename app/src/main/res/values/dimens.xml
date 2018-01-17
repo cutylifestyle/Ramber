@@ -16,6 +16,8 @@
     <dimen name="dp_55">55dp</dimen>
     <dimen name="dp_60">60dp</dimen>
     <dimen name="dp_80">80dp</dimen>
+    <dimen name="dp_160">160dp</dimen>
+    <dimen name="dp_250">250dp</dimen>
 
     <!--字体大小-->
 
