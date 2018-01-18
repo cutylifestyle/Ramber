@@ -21,14 +21,14 @@
         android:gravity="center">
 
         <TextView
-            android:id="@+id/tv_album_title"
+            android:id="@+id/tv_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="sans-serif-medium"
             android:singleLine="true"
             android:textAppearance="@style/TextAppearance.AppCompat.Subhead"/>
         <TextView
-            android:id="@+id/tv_album_artist"
+            android:id="@+id/tv_subTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="sans-serif"
