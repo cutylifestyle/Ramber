@@ -8,9 +8,11 @@ import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 
 import com.sixin.ramber.Config;
 import com.sixin.ramber.R;
+import com.sixin.ramber.RamberDrawerListener;
 import com.sixin.ramber.fragments.FoldersFragment;
 import com.sixin.ramber.fragments.MainFragment;
 import com.sixin.ramber.fragments.PlayListFragment;
@@ -32,6 +34,9 @@ public class MainActivity extends BaseActivity {
     // TODO: 2018/1/3 集成下拉刷新控件
     // TODO: 2018/1/7 baseRecyclerAdapter
     // TODO: 2018/1/8 入场、出场动画
+
+    private String menuItem = "";
+
     private NavigationView mNavMain;
     private DrawerLayout mDLMain;
 
@@ -41,32 +46,32 @@ public class MainActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         initViews();
-        setViewsListener();
+        setNavigationListener();
+        setDrawerListener();
         checkPermissionAndThenLoad();
     }
 
     private void initGUI() {
         mNavMain.getMenu().findItem(R.id.nav_library).setChecked(true);
-        bindFragmentV4(MainFragment.newInstance(),R.id.fragment_container);
+        addFragmentV4(MainFragment.newInstance(),Config.MAIN_FRAGMENT,R.id.fragment_container);
     }
 
-    private void setViewsListener() {
+    private void setNavigationListener() {
         mNavMain.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 switch (item.getItemId()) {
                     case R.id.nav_library:
-                        //TODO 需要优化的点：默认情况下初始加载这个界面，但是点击这个菜单界面又会重新创建
                         setNavigationState(item,true);
-                        bindFragmentV4(MainFragment.newInstance(),R.id.fragment_container);
+                        menuItem = Config.MAIN_FRAGMENT;
                         break;
                     case R.id.nav_playlist:
                         setNavigationState(item,true);
-                        bindFragmentV4(PlayListFragment.newInstance(), R.id.fragment_container);
+                        menuItem = Config.PLAY_LIST_FRAGMENT;
                         break;
                     case R.id.nav_folders:
                         setNavigationState(item,true);
-                        bindFragmentV4(FoldersFragment.newInstance(),R.id.fragment_container);
+                        menuItem =Config.FOLDERS_FRAGMENT;
                         break;
                     case R.id.nav_play_queue:
                         break;
@@ -80,6 +85,33 @@ public class MainActivity extends BaseActivity {
                         break;
                 }
                 return true;
+            }
+        });
+    }
+
+    private void setDrawerListener() {
+        mDLMain.addDrawerListener(new RamberDrawerListener(){
+            @Override
+            public void onDrawerClosed(View drawerView) {
+                switch (menuItem){
+                    case Config.MAIN_FRAGMENT:
+                        showOrAddFragment(Config.MAIN_FRAGMENT,
+                                MainFragment.newInstance(),
+                                R.id.fragment_container);
+                        break;
+                    case Config.PLAY_LIST_FRAGMENT:
+                        showOrAddFragment(Config.PLAY_LIST_FRAGMENT,
+                                PlayListFragment.newInstance(),
+                                R.id.fragment_container);
+                        break;
+                    case Config.FOLDERS_FRAGMENT:
+                        showOrAddFragment(Config.FOLDERS_FRAGMENT,
+                                FoldersFragment.newInstance(),
+                                R.id.fragment_container);
+                        break;
+
+
+                }
             }
         });
     }

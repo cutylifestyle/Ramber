@@ -25,6 +25,15 @@ public class Config {
     //recyclerView中GridLayout的列数
     public static final int SPAN_COUNT = 2;
 
+    //首页主碎片
+    public static final String MAIN_FRAGMENT = "mainFragment";
+    //播放列表的碎片
+    public static final String PLAY_LIST_FRAGMENT = "playListFragment";
+    //文件夹碎片
+    public static final String FOLDERS_FRAGMENT = "foldersFragment";
+    //设置界面
+    public static final String SETTING = "setting";
+
     private Config(){
         throw new UnsupportedOperationException("u can't instantiate me...");
     }
