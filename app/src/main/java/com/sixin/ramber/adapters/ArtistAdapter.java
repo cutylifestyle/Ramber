@@ -93,7 +93,7 @@ public class ArtistAdapter extends RecyclerView.Adapter<ArtistAdapter.ArtistView
         private TextView mTvMusicInfo;
         private LinearLayout mLLFooter;
 
-        public ArtistViewHolder(View itemView) {
+        private ArtistViewHolder(View itemView) {
             super(itemView);
             initViews();
         }
