@@ -14,7 +14,8 @@
             android:id="@+id/exo_artwork"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:scaleType="fitXY"/>
+            android:scaleType="fitXY"
+            android:contentDescription="@string/app_name"/>
 
         <android.support.v7.widget.Toolbar
             android:layout_width="match_parent"
