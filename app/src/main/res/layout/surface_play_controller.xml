@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:baselineAligned="false"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginTop="30dp">
+
+        <LinearLayout
+            android:layout_weight="2"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            >
+
+            <TextView
+                android:id="@+id/song_title"
+                android:textSize="25sp"
+                style="@style/textStyle"
+                />
+
+            <TextView
+                android:id="@+id/song_artist"
+                android:layout_marginBottom="10dp"
+                android:textSize="16sp"
+                style="@style/textStyle"
+                />
+
+        </LinearLayout>
+
+        <RelativeLayout
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:gravity="center">
+
+            <ImageButton
+                style="@style/imageButtonStyle"
+                android:id="@+id/exo_shuffle"
+                android:contentDescription="@string/app_name"
+                 />
+
+            <ImageButton
+                style="@style/imageButtonStyle"
+                android:id="@+id/exo_repeat_toggle"
+                android:contentDescription="@string/app_name"
+                android:layout_toEndOf="@id/exo_shuffle"
+                android:layout_marginStart="20dp"/>
+
+        </RelativeLayout>
+
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp">
+
+        <com.google.android.exoplayer2.ui.DefaultTimeBar
+            android:id="@+id/exo_progress"
+            android:layout_width="match_parent"
+            android:layout_height="20dp"
+            android:layout_marginTop="5dp"
+            app:played_color="@color/colorAccent"
+            app:unplayed_color="@color/gray"/>
+
+        <TextView
+            android:id="@+id/exo_position"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/exo_progress"
+            android:textColor="@color/black"
+            />
+
+        <TextView
+            android:id="@+id/exo_duration"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/exo_progress"
+            android:layout_alignParentEnd="true"
+            android:textColor="@color/black"/>
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="50dp"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="10dp"
+        android:gravity="center">
+
+        <ImageButton
+            android:layout_weight="1"
+            style="@style/imageButtonStyle"
+            android:id="@+id/exo_prev"
+            android:layout_marginStart="20dp"
+            android:src="@drawable/ic_skip_previous"
+            android:contentDescription="@string/app_name"/>
+
+        <FrameLayout
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            >
+
+            <ImageButton
+                android:id="@+id/exo_play"
+                android:layout_gravity="center"
+                style="@style/imageButtonStyle"
+                android:src="@drawable/ic_play_circle_filled"
+                android:contentDescription="@string/app_name"/>
+
+            <ImageButton
+                android:id="@+id/exo_pause"
+                android:layout_gravity="center"
+                style="@style/imageButtonStyle"
+                android:src="@drawable/ic_pause_circle_filled"
+                android:contentDescription="@string/app_name"/>
+
+        </FrameLayout>
+
+        <ImageButton
+            android:layout_weight="1"
+            style="@style/imageButtonStyle"
+            android:layout_marginEnd="20dp"
+            android:src="@drawable/ic_skip_next"
+            android:contentDescription="@string/app_name"/>
+
+    </LinearLayout>
+
+</LinearLayout>
