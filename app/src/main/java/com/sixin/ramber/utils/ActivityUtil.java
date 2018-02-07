@@ -1,11 +1,15 @@
 package com.sixin.ramber.utils;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
+import android.support.annotation.AnimRes;
 import android.support.annotation.NonNull;
+import android.support.v4.app.ActivityOptionsCompat;
 
 import java.util.List;
 
@@ -71,6 +75,31 @@ public class ActivityUtil {
         startActivity(activity,extras,activity.getPackageName(),cls.getName(),null);
     }
 
+    /**
+     * 启动 Activity
+     *
+     * @param activity  activity
+     * @param enterAnim 入场动画
+     * @param exitAnim  出场动画
+     */
+    @SuppressLint("ObsoleteSdkInt")
+    public static void startActivity(@NonNull final Activity activity,
+                                     @NonNull final Class<?> cls,
+                                     @NonNull final Bundle extras,
+                                     @AnimRes final int enterAnim,
+                                     @AnimRes final int exitAnim) {
+        startActivity(activity,extras,activity.getPackageName(),cls.getName(),getOptionsBundle(activity,enterAnim,exitAnim));
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.JELLY_BEAN) {
+            activity.overridePendingTransition(enterAnim, exitAnim);
+        }
+    }
+
+    private static Bundle getOptionsBundle(final Context context,
+                                           final int enterAnim,
+                                           final int exitAnim) {
+        return ActivityOptionsCompat.makeCustomAnimation(context, enterAnim, exitAnim).toBundle();
+    }
+
     private static Context getTopActivityOrApp(){
         Activity topActivity = getTopActivity();
         return topActivity == null ? Util.getApp():topActivity;
@@ -111,11 +140,12 @@ public class ActivityUtil {
         finishActivity(activity,false);
     }
 
-    private static void finishActivity(@NonNull final Activity activity,
+
+    public static void finishActivity(@NonNull final Activity activity,
                                       @NonNull final boolean isLoadAnim){
         activity.finish();
         if(!isLoadAnim){
-            activity.overridePendingTransition(0,0);
+            activity.overridePendingTransition(0,android.R.anim.slide_out_right);
         }
     }
 

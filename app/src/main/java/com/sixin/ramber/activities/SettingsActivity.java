@@ -39,7 +39,7 @@ public class SettingsActivity extends BaseActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case android.R.id.home:
-                ActivityUtil.finishActivity(this);
+                ActivityUtil.finishActivity(this,true);
                 break;
         }
         return super.onOptionsItemSelected(item);

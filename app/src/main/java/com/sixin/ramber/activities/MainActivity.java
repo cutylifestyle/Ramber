@@ -27,14 +27,11 @@ import com.sixin.ramber.utils.permissionsutil.PermissionsUtil;
  * */
 
 public class MainActivity extends BaseActivity {
-    //TODO 矢量动画，动画start以后在什么时候执行的
     //TODO AppBarLayout TabLayout 碎片中的菜单方法
     // TODO: 2017/12/27 Gallery
     // TODO: 2018/1/3 behavior的原理
     // TODO: 2018/1/3 集成下拉刷新控件
     // TODO: 2018/1/7 baseRecyclerAdapter
-    // TODO: 2018/1/8 入场、出场动画
-
     private String menuItem = "";
 
     private NavigationView mNavMain;
@@ -119,7 +116,7 @@ public class MainActivity extends BaseActivity {
     private void startSettingsActivity() {
         Bundle extras = new Bundle();
         extras.putString(Config.ACTIVITY_SETTINGS,Config.NAVIGATE_SETTINGS);
-        ActivityUtil.startActivity(this, SettingsActivity.class, extras);
+        ActivityUtil.startActivity(this,SettingsActivity.class,extras);
     }
 
     private void setNavigationState(@NonNull MenuItem item,boolean isClose) {
